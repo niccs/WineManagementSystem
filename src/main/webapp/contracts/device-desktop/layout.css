@@ -51,6 +51,12 @@ body > footer > p {
     margin: 0;
 }
 
+.content {
+  min-height: 80vh;
+}
+main {
+  flex: 1;
+}
 .wine-summary {
     background-color: #01ACA7;
     font-size: 19px;

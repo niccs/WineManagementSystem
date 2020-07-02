@@ -10,7 +10,7 @@
         <ui:define name="panel-main">
             <section>
                 <h1 class="heading" >Select your wine</h1>
-                <h:form>
+                <h:form class="content">
                     <ui:repeat value="#{wines.allWines}" var="wine">
                         <ui:decorate template="/templates/wine-summary.xhtml">
                             <ui:param name="wine" value="#{wine}"/>
