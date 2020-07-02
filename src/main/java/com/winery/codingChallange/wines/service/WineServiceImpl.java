@@ -24,8 +24,6 @@ import com.winery.codingChallange.wines.model.Wine;
 @ApplicationScoped
 public class WineServiceImpl implements WineService {
 
-//    private final Map<Long, Wine> winesMap;
-
 	private final List<Wine> wines;
 
 	public WineServiceImpl() {
@@ -66,9 +64,11 @@ public class WineServiceImpl implements WineService {
 
 	public List<String> printYearBreakdown(Set<GrapeComponent> components) {
 
+		// First step is to do grouping matching year as key and value as collector of double(adding percentage)
 		Map<Integer, Double> grapeComponentsGroupedByYear = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getYear, Collectors.summingDouble(GrapeComponent::getPercentage)));
-
+		
+		// Do the reverse sorting and collect in a list
 		List<String> printYearList = grapeComponentsGroupedByYear.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.map(e -> e.getKey() + "  -  " + e.getValue() + "%").collect(Collectors.toList());
@@ -79,15 +79,16 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printRegionBreakdown(Set<GrapeComponent> components) {
+		
+		// First step is to do grouping matching Region as key and value as collector of double(adding percentage)
 		Map<String, Double> grapeComponentsGroupedByRegion = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getRegion, Collectors.summingDouble(GrapeComponent::getPercentage)));
-
-//		System.out.println(grapeComponentsGroupedByYear);
+		
+		// Do the reverse sorting and collect in a list
 		List<String> printRegionList = grapeComponentsGroupedByRegion.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.map(e -> e.getKey() + "  -  " + e.getValue() + "%").collect(Collectors.toList());
 
-//		grapeComponentsGroupedByYear.entrySet().stream().forEach(System.out::println);
 
 		return printRegionList;
 
@@ -95,9 +96,12 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printVarietyBreakdown(Set<GrapeComponent> components) {
+		
+		// First step is to do grouping matching variety as key and value as collector of double(adding percentage)
 		Map<String, Double> grapeComponentsGroupedByVariety = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getVariety, Collectors.summingDouble(GrapeComponent::getPercentage)));
 
+		// Do the reverse sorting and collect in a list
 		List<String> printVarietyList = grapeComponentsGroupedByVariety.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.map(e -> e.getKey() + "  -  " + e.getValue() + "%").collect(Collectors.toList());
@@ -107,17 +111,19 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printYearAndVarietyBreakdown(Set<GrapeComponent> components) {
-
+		
+		//  First step is to do multi-level grouping matching year and variety and get map of maps
 		Map<Integer, Map<String, Double>> grapeComponentsGroupedByYearAndVariety = components.stream().collect(
 				Collectors.groupingBy(GrapeComponent::getYear, Collectors.groupingBy(GrapeComponent::getVariety,
 						Collectors.summingDouble(GrapeComponent::getPercentage))));
 
-		// Trasforming to a simple map to perform reverse sorting
+		// Transforming Map of Maps to a simple map using flatmap to perform reverse sorting
 		Map<String, Double> grapeComponentsByYearAndVariety = grapeComponentsGroupedByYearAndVariety.entrySet().stream()
 				.flatMap(e -> e.getValue().entrySet().stream()
 						.flatMap(v -> Stream.of(new SimpleEntry<>(e.getKey() + " - " + v.getKey(), v.getValue()))))
 				.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-
+		
+		// Do the reverse sorting and collect in a list
 		List<String> printYearVarietyList = grapeComponentsByYearAndVariety.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.map(e -> e.getKey() + "  -  " + e.getValue() + "%").collect(Collectors.toList());
