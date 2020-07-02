@@ -8,8 +8,8 @@ For Excercise1:
   - The implementation of 4 wine composition methods is done is WineServiceImpl class.
 For Excercise2:
   - A JSF UI that would allow a user to select a wine to see its details.
-  - User can view basic details of a wine, and a combo-box toto switch between viewing the different composition types.
-  - Composition types support printYearBreakdown,printVarietyBreakdown, printRegionBreakdown and printYearAndVarietyBreakdown.
+  - User can view basic details of a wine, and a combo-box to switch between viewing the different composition types.
+  - Composition types supports printYearBreakdown,printVarietyBreakdown, printRegionBreakdown and printYearAndVarietyBreakdown.
   - Each method shows the percentage of the unique property along with the unique properties sorted from highest percentage to lowest.
   - JSF backing bean is loading a Wine object from the JSON sample files from the web-resourceses.
   - Maven build is provided.
