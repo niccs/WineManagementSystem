@@ -1,0 +1,49 @@
+body {
+    background-color: #e5e5e5;
+}
+
+a:link, a:visited {
+    color: #FFFCCE;
+}
+
+a:hover, a:active {
+    color:  white;
+}
+
+input, select {
+    background-color: white;
+    color: black;
+    border: 1px solid #808080;
+    padding: 0.25em;
+}
+
+option {
+    background-color: white;
+    color: black;
+}
+
+input[readonly] {
+    color: #808080;
+}
+
+input[type="submit"], input[type="button"] {
+    border-radius: 0.25em;
+    padding: 0.25em 0.75em;
+}
+
+body > header {
+    background-color: #F74901;
+    color: white;
+}
+
+body > section {
+    background-color: white;
+    color: black;
+}
+
+body > footer {
+    background-color: #232323;
+    color: #e5e5e5;
+}
+
+

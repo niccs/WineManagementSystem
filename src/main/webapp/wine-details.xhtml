@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	
+<f:view contentType="text/html"
+	contracts="common,device-desktop,theme-#{theme.name}">
+	<ui:composition template="/templates/page-template.xhtml">
+		<f:metadata>
+			<f:viewParam name="wineId" value="#{wineDetails.wineId}" />
+			<f:viewAction action="#{wineDetails.onload}" />
+		</f:metadata>
+		<ui:param name="pageTitle" value="Wine Details" />
+		<ui:define name="panel-main">
+			<section class="wine-details">
+
+				<h:form>
+					
+					<div class="wine-details--heading">Lot Code</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.lotCode}</p>
+					</div>
+					<div class="wine-details--heading">Description</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.description}</p>
+					</div>
+					<div class="wine-details--heading">Volume</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.volume}</p>
+					</div>
+					<div class="wine-details--heading">TankCode</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.tankCode}</p>
+					</div>
+					<div class="wine-details--heading">ProductState</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.productState}</p>
+					</div>
+					<div class="wine-details--heading">OwnerName</div>
+					<div class="wine-details--value">
+						<p>#{wineDetails.wine.ownerName}</p>
+					</div>
+
+					<br />
+					<div class="wine-details--heading">Select Compositions</div>
+					<h:selectOneMenu value="#{wineDetails.selectedWineComponent}" >
+						<f:selectItem itemValue="SELECT COMPOSITIONS" itemLabel="SELECT COMPOSITIONS" />
+						<f:selectItem itemValue="YEAR" itemLabel="YEAR" />
+						<f:selectItem itemValue="VARIETY"
+							itemLabel="VARIETY" />
+						<f:selectItem itemValue="REGION" itemLabel="REGION" />
+						<f:selectItem itemValue="YEAR + VARIETY" itemLabel="YEAR + VARIETY" />
+						<f:ajax listener="#{wineDetails.ajaxListener}" render= "showGrapeComponents"/>
+						
+					</h:selectOneMenu>
+					<br />
+					<br />
+					<section jsf:id = "showGrapeComponents">
+						<div class="wine-details--heading">#{wineDetails.selectedWineComponent}</div>
+						<div class="wine-details--value">
+							<ui:repeat  value="#{wineDetails.compositionData}" var="grapeComposition">
+							    #{grapeComposition} <br />
+							</ui:repeat>
+						</div>
+						
+					</section>
+					<br />
+
+
+					<p>
+						<h:link class="back" value="Back to Wine List" outcome="home" />
+					</p>
+				</h:form>
+			</section>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>
+

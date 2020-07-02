@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15935201288836" configfile="/WineManagementSystem/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="sign-in.xhtml" x="122" y="178" id="pf15935996164127" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" path="/sign-in.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="562" id="pf159359961641310" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf159359961641311" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="first_page.xhtml" x="122" y="562" id="pf159359961641313" outlinks="pf159359961641311" path="*"/>
+  <links id="pf159359961641311" target="pf159359961641310" source="pf159359961641313"/>
+</pageflow:Pageflow>

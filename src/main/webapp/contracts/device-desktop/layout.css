@@ -1,0 +1,146 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h4, h5, h6 {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+}
+
+p {
+    margin: 0.5em 0 0 0;
+    padding: 0;
+}
+
+input, button, select {
+    font-family: Arial, sans-serif;
+    font-size: 100%;
+}
+
+body > header {
+    padding: 1em;
+    clear: both;
+    text-align: center;
+}
+
+body > header > h1 {
+    margin: 0;
+}
+
+body > section {
+    margin: 0.5em 20%;
+    padding: 1em;
+    overflow: hidden;
+}
+
+body > footer {
+    padding: 3rem;
+    clear: both;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+body > footer > p {
+    margin: 0;
+}
+
+.wine-summary {
+    background-color: #01ACA7;
+    font-size: 19px;
+    border-radius: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+}
+
+.wine-details--heading{
+	font-size: 22px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 8px;
+}
+.wine-details--value{
+	background-color: #01ACA7;
+    font-size: 19px;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.heading{
+	display: flex;
+    justify-content: center;
+    font-size: 34px;
+}
+
+ul.validation-messages {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+}
+
+ul.validation-messages li {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+.form-grid {
+    width: 100%;
+}
+
+.form-column-label {
+    white-space: nowrap;
+    padding-right: 1em;
+}
+
+.form-column-input {
+    width: 100%;
+}
+
+.button-right {
+    margin-top: 0.5em;
+    float: right;
+    clear: both;
+}
+.button {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background-color: #232323;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.back{
+	 display: block;
+    width: 180px;
+    height: 25px;
+    background-color: #232323;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration:none;
+}
+
