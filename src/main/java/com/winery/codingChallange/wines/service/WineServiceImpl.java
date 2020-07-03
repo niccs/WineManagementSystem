@@ -24,7 +24,7 @@ import com.winery.codingChallange.wines.model.Wine;
 @ApplicationScoped
 public class WineServiceImpl implements WineService {
 
-	private final List<Wine> wines;
+	private List<Wine> wines;
 
 	public WineServiceImpl() {
 
@@ -46,6 +46,11 @@ public class WineServiceImpl implements WineService {
 		wines.add(wine3);
 	}
 
+	//This constructor is just for unit testing instantiation
+	public WineServiceImpl(String value) {
+		super();
+	}
+
 	@Override
 	public List<Wine> getWines() {
 		return wines;
@@ -64,10 +69,11 @@ public class WineServiceImpl implements WineService {
 
 	public List<String> printYearBreakdown(Set<GrapeComponent> components) {
 
-		// First step is to do grouping matching year as key and value as collector of double(adding percentage)
+		// First step is to do grouping matching year as key and value as collector of
+		// double(adding percentage)
 		Map<Integer, Double> grapeComponentsGroupedByYear = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getYear, Collectors.summingDouble(GrapeComponent::getPercentage)));
-		
+
 		// Do the reverse sorting and collect in a list
 		List<String> printYearList = grapeComponentsGroupedByYear.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
@@ -79,16 +85,16 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printRegionBreakdown(Set<GrapeComponent> components) {
-		
-		// First step is to do grouping matching Region as key and value as collector of double(adding percentage)
+
+		// First step is to do grouping matching Region as key and value as collector of
+		// double(adding percentage)
 		Map<String, Double> grapeComponentsGroupedByRegion = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getRegion, Collectors.summingDouble(GrapeComponent::getPercentage)));
-		
+
 		// Do the reverse sorting and collect in a list
 		List<String> printRegionList = grapeComponentsGroupedByRegion.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.map(e -> e.getKey() + "  -  " + e.getValue() + "%").collect(Collectors.toList());
-
 
 		return printRegionList;
 
@@ -96,8 +102,9 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printVarietyBreakdown(Set<GrapeComponent> components) {
-		
-		// First step is to do grouping matching variety as key and value as collector of double(adding percentage)
+
+		// First step is to do grouping matching variety as key and value as collector
+		// of double(adding percentage)
 		Map<String, Double> grapeComponentsGroupedByVariety = components.stream().collect(Collectors
 				.groupingBy(GrapeComponent::getVariety, Collectors.summingDouble(GrapeComponent::getPercentage)));
 
@@ -111,18 +118,20 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<String> printYearAndVarietyBreakdown(Set<GrapeComponent> components) {
-		
-		//  First step is to do multi-level grouping matching year and variety and get map of maps
+
+		// First step is to do multi-level grouping matching year and variety and get
+		// map of maps
 		Map<Integer, Map<String, Double>> grapeComponentsGroupedByYearAndVariety = components.stream().collect(
 				Collectors.groupingBy(GrapeComponent::getYear, Collectors.groupingBy(GrapeComponent::getVariety,
 						Collectors.summingDouble(GrapeComponent::getPercentage))));
 
-		// Transforming Map of Maps to a simple map using flatmap to perform reverse sorting
+		// Transforming Map of Maps to a simple map using flatmap to perform reverse
+		// sorting
 		Map<String, Double> grapeComponentsByYearAndVariety = grapeComponentsGroupedByYearAndVariety.entrySet().stream()
 				.flatMap(e -> e.getValue().entrySet().stream()
 						.flatMap(v -> Stream.of(new SimpleEntry<>(e.getKey() + " - " + v.getKey(), v.getValue()))))
 				.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-		
+
 		// Do the reverse sorting and collect in a list
 		List<String> printYearVarietyList = grapeComponentsByYearAndVariety.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))

@@ -1,6 +1,7 @@
 package com.winery.codingChallange.wines.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class GrapeComponent implements Serializable {
 
@@ -61,12 +62,8 @@ public class GrapeComponent implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int hash = 47;
-		hash = 31 * hash + (int) percentage;
-		hash = 31 * hash + (int) year;
-		hash = 31 * hash + (region == null ? 0 : region.hashCode());
-		hash = 31 * hash + (variety == null ? 0 : variety.hashCode());
-		return hash;
+
+		return Objects.hash(percentage, year, variety, region);
 	}
 
 }
