@@ -1,6 +1,7 @@
 package com.winery.codingChallange.wines.service;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Collections;

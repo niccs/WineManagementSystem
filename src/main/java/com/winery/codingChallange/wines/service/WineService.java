@@ -6,7 +6,6 @@ import java.util.Set;
 import com.winery.codingChallange.wines.model.GrapeComponent;
 import com.winery.codingChallange.wines.model.Wine;
 
-
 public interface WineService {
 
 	List<Wine> getWines();
