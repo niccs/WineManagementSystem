@@ -47,6 +47,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<version>5.4.0</version>
@@ -72,9 +79,10 @@
 				<artifactId>maven-embedded-glassfish-plugin</artifactId>
 				<version>5.0</version>
 				<configuration>
+					<goalPrefix>embedded-glassfish</goalPrefix>
 					<app>target/wineManagementSystem.war</app>
 					<port>8080</port>
-					<contextRoot>/</contextRoot>
+					<contextRoot>WineManagementsystem</contextRoot>
 					<autoDelete>true</autoDelete>
 				</configuration>
 				<executions>
