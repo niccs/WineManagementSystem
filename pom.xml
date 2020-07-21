@@ -45,13 +45,20 @@
 			<version>1.1.5</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 
-	
+
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.4.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.4.0</version>
+			<version>5.4.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -77,16 +84,17 @@
 					<goalPrefix>embedded-glassfish</goalPrefix>
 					<app>target/wineManagementSystem.war</app>
 					<port>8080</port>
-					<contextRoot>WineManagementsystem</contextRoot>
+					<contextRoot>WineManagementSystem</contextRoot>
 					<autoDelete>true</autoDelete>
 				</configuration>
 				<executions>
 					<execution>
 						<phase>install</phase>
 						<goals>
-						<goal>deploy</goal>
+							<goal>deploy</goal>
 							<goal>run</goal>
 							<goal>start</goal>
+							<goal>undeploy</goal>
 						</goals>
 					</execution>
 				</executions>
