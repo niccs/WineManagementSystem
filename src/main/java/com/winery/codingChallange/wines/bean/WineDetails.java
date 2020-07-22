@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.view.ViewScoped;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,7 +14,7 @@ import com.winery.codingChallange.wines.model.Wine;
 import com.winery.codingChallange.wines.service.WineService;
 
 @Named
-@ViewScoped
+@ApplicationScoped
 public class WineDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
