@@ -26,9 +26,9 @@ For Excercise2:
 ### Tech
 * JDK 1.8.0_201
 * JSF 2.2
-* JAVA  EE 7 compliant server (I have configured Glassfish 4)
+* JAVA  EE 7 compliant server (I have configured Glassfish 5)
 
-### Installation instructions
+### Installation instructions. -- via eclipse
 
 *  Import the maven repo 
 *  Install the Glassfish server
@@ -37,3 +37,15 @@ For Excercise2:
 *  From project properties, in targeted runtime-- select the Glassfish server.
 *  WineManagementSystem--Run on server
 *  The localhost URL will be:--http://localhost:8080/wineManagementSystem/
+
+
+
+### Installation instructions. -- via maven command line
+
+I have used maven embedded-glassfish plugin to install the app.
+
+*  Download the unzip project WineManagementSystem
+*  mvn install
+*  mvn embedded-glassfish:run
+*  The localhost URL will be:--http://localhost:8080/WineManagementSystem/
+
