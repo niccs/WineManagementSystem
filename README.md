@@ -1,5 +1,5 @@
 # Winery Management System
-A simple user interface  created in JSF and Java that would allow a user to view the basic details of a wine, reading data from json files as parth of coding challange.
+A simple user interface  created in JSF and Java that would allow a user to view the basic details of a wine, reading data from json files as part of coding challange for Vintrace
 
 
 ###  Features Supported!
